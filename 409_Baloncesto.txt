@@ -1,0 +1,66 @@
+Escribe un documento XML que permita guardar la información de dos equipos de baloncesto y su correspondiente documento DTD que permita su validación.
+
+El nodo raíz del documento XML será equipos_de_baloncesto, el cual contendrá dos elementos equipo.
+
+De cada equipo, se debe almacenar:
+* nombre
+* ciudad
+* entrenador
+* jugadores
+
+De cada jugador, se debe guardar:
+* nombre
+* posicion: deberá representarse mediante un atributo y sus valores pueden ser (Base, Escolta, Alero o Pivot).
+* nacionalidad
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DTD Interno:
+
+<!ELEMENT equipos_de_baloncesto (equipo, equipo)>
+<!ELEMENT equipo (nombre, ciudad, entrenador, jugadores)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ciudad (#PCDATA)>
+<!ELEMENT entrenador (#PCDATA)>
+<!ELEMENT jugadores (jugador+, jugador+)>
+<!ELEMENT jugador (nombre, posicion, nacionalidad)>
+<!ATTLIST jugador
+          posicion (Base|Escolta|Alero|Pivot) #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT posicion EMPTY>
+<!ELEMENT nacionalidad (#PCDATA)>
+
+XML:
+
+<equipos_de_baloncesto>
+  <equipo>
+    <nombre>Equipo A</nombre>
+    <ciudad>Ciudad A</ciudad>
+    <entrenador>Entrenador A</entrenador>
+    <jugadores>
+      <jugador posicion="Base">
+        <nombre>Jugador 1</nombre>
+        <nacionalidad>Nacionalidad 1</nacionalidad>
+      </jugador>
+      <jugador posicion="Escolta">
+        <nombre>Jugador 2</nombre>
+        <nacionalidad>Nacionalidad 2</nacionalidad>
+      </jugador>
+    </jugadores>
+  </equipo>
+  <equipo>
+    <nombre>Equipo B</nombre>
+    <ciudad>Ciudad B</ciudad>
+    <entrenador>Entrenador B</entrenador>
+    <jugadores>
+      <jugador posicion="Alero">
+        <nombre>Jugador 3</nombre>
+        <nacionalidad>Nacionalidad 3</nacionalidad>
+      </jugador>
+      <jugador posicion="Pivot">
+        <nombre>Jugador 4</nombre>
+        <nacionalidad>Nacionalidad 4</nacionalidad>
+      </jugador>
+    </jugadores>
+  </equipo>
+</equipos_de_baloncesto>
