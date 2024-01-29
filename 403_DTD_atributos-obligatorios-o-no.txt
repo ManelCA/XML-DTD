@@ -15,7 +15,15 @@ Elabora un documento DTD que permita validar la estructura del documento XML ant
 1) La biblioteca puede tener un libro o más.
 2) El atributo codigo es obligatorio.
 3) El atributo ubicacion no es obligatorio.
-
+----------------------------------------------------------------------------------------------------------------------------
+<!ELEMENT biblioteca (libro+)>
+<!ELEMENT libro (autor, titulo)>
+<!ATTLIST libro
+          codigo CDATA #REQUIRED
+          ubicacion CDATA #IMPLIED>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+----------------------------------------------------------------------------------------------------------------------------
 <!DOCTYPE biblioteca SYSTEM "biblioteca.dtd">
 <biblioteca>
   <libro codigo="123" ubicacion="estantería 1">
